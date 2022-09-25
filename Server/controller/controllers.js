@@ -1,86 +1,86 @@
 const RS = require("../Model/PlayerInformation")
 
 const getAllEntries = async (req, res, next) => {
-    let list;
+    let objects;
     try {
-        list = await RS.find();
+      objects = await RS.find();
     } catch (err) {
       console.log(err);
     }
   
-    if (!list) {
+    if (!objects) {
       return res.status(404).json({ message: "No values found" });
     }
-    return res.status(200).json({ list });
+    return res.status(200).json({ objects });
   };
   
   const getById = async (req, res, next) => {
     const id = req.params.id;
-    let view_value;
+    let object;
     try {
-        view_value = await RS.findById(id);
+      object = await RS.findById(id);
     } catch (err) {
       console.log(err);
     }
-    if (!view_value) {
+    if (!object) {
       return res.status(404).json({ message: "No value found" });
     }
-    return res.status(200).json({ view_value });
+    return res.status(200).json({ object });
   };
   
   const addEntry = async (req, res, next) => {
     const { name, position, years, battingAvg, available } = req.body;
     let new_addition;
     try {
-        new_addition = new RS({
+      object = new RS({
             name,
             position,
             years,
             battingAvg,
             available,
       });
-      await new_addition.save();
+      await object.save();
     } catch (err) {
       console.log(err);
     }
   
-    if (!new_addition) {
+    if (!object) {
       return res.status(500).json({ message: "Unable To Add" });
     }
-    return res.status(201).json({ new_addition });
+    return res.status(201).json({ object });
   };
   
   const updateEntry = async (req, res, next) => {
     const id = req.params.id;
     const { name, position, years, battingAvg, available } = req.body;
-    let new_update;
+    let object;
     try {
-        new_update = await RS.findByIdAndUpdate(id, {
+      object = await RS.findByIdAndUpdate(id, {
             name,
             position,
             years,
             battingAvg,
             available,
       });
-      new_update = await new_update.save();
+      object = await object.save();
     } catch (err) {
       console.log(err);
     }
-    if (!new_update) {
+    if (!object) {
       return res.status(404).json({ message: "Unable To Update By this ID" });
     }
-    return res.status(200).json({ new_update });
+    return res.status(200).json({ object });
   };
   
   const deleteEntry = async (req, res, next) => {
     const id = req.params.id;
-    let to_delete;
+    let object;
     try {
-        to_delete = await RS.findByIdAndRemove(id);
+      object = await RS.findByIdAndRemove(id);
     } catch (err) {
       console.log(err);
     }
-    if (!to_delete) {
+    if (!object) {
       return res.status(404).json({ message: "Unable To Delete By this ID" });
     }
     return res.status(200).json({ message: "Value Successfully Deleted" });

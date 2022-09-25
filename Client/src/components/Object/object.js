@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./object.css";
-const Object_function = (props) => {
+const Object = (props) => {
   const history = useNavigate();
   const { _id, name, position, years, battingAvg, available } = props.object;
   const deleteHandler = async () => {
@@ -30,4 +30,4 @@ const Object_function = (props) => {
   );
 };
 
-export default Object_function;
+export default Object;

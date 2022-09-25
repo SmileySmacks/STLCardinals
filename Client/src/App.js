@@ -2,10 +2,10 @@ import React from "react";
 import Header from "./components/Header";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-import AddVehicle from "./components/AddObject";
-import Vehicles from "./components/Object/objects"
+import AddObject from "./components/AddObject";
+import Objects from "./components/Object/objects"
 import About from "./components/About";
-import VehicleDetails from "./components/Object/objectDetails"
+import ObjectDetails from "./components/Object/objectDetails"
 function App() {
   return (
     <React.Fragment>
@@ -15,10 +15,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} exact />
-          <Route path="/add" element={<AddVehicle />} exact />
-          <Route path="/cardinals" element={<Vehicles />} exact />
+          <Route path="/add" element={<AddObject />} exact />
+          <Route path="/cardinals" element={<Objects />} exact />
           <Route path="/about" element={<About />} exact />
-          <Route path="/cardinals/:id" element={<VehicleDetails />} exact />
+          <Route path="/cardinals/:id" element={<ObjectDetails />} exact />
         </Routes>
       </main>
     </React.Fragment>

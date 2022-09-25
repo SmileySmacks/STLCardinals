@@ -121,7 +121,7 @@ import {
 
   
           <Button variant="contained" type="submit">
-            Add
+            Add Player
           </Button>
         </Box>
       </form>
